@@ -1,0 +1,72 @@
+header.banner {
+    //background: $color-primary;
+    color: $color-text;
+    margin: auto;
+
+    .container--header {
+        padding: 60px 0;
+        position: relative;
+    }
+
+    h1 a {
+        color: $color-text;
+        text-decoration: none;
+        border: 0;
+    }
+
+    h1 {
+        margin-top: 24px;
+    }
+
+
+    //@media screen and (min-width: 769px) {
+        h1 {
+            margin-bottom: 12px;
+        }
+    //}
+
+
+    h3 {
+        margin-top: 0;
+    }
+
+    p.description {
+        font-size: 16px;
+        font-family: $font-family-headline;
+        line-height: 24px;
+        font-weight: 400;
+        margin: auto;
+        margin-bottom: 24px;
+        width: 80%;
+    }
+
+    &--with-image {
+        color: #fff;
+        border-color: #fff;
+
+        a {
+            color: $color-primary;
+            border-color: $color-primary;
+
+            &:hover, &focus {
+                color: $color-secondary;
+                border-color: $color-secondary;
+            }
+        }
+    }
+
+    @media screen and (min-width: 769px) {
+        &--with-image {
+            background-position: center;
+            background-size: cover;
+
+            .container h2 {
+                margin-top: 0;
+                font-weight: 400;
+            }
+        }
+        &--with-padding {
+            padding: 145px 0;
+        }
+    }
+}

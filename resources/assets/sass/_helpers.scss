@@ -1,0 +1,43 @@
+.centered {
+    text-align: center;
+}
+
+// auto-generated classes
+$i: 0;
+@while $i <= $helpers-max {
+    // margin
+    .mt-#{$i} {
+        margin-top: #{$i}px !important;
+    }
+
+    .mb-#{$i} {
+        margin-bottom: #{$i}px !important;
+    }
+
+    .ml-#{$i} {
+        margin-left: #{$i}px !important;
+    }
+
+    .mr-#{$i} {
+        margin-right: #{$i}px !important;
+    }
+
+    // padding
+    .pt-#{$i} {
+        padding-top: #{$i}px !important;
+    }
+
+    .pb-#{$i} {
+        padding-bottom: #{$i}px !important;
+    }
+
+    .pl-#{$i} {
+        padding-left: #{$i}px !important;
+    }
+
+    .pr-#{$i} {
+        padding-right: #{$i}px !important;
+    }
+
+    $i: $i + $helpers-steps;
+}

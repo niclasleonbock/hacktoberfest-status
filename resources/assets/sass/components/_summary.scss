@@ -1,0 +1,29 @@
+.summary {
+    ul {
+        margin: 0;
+        margin-bottom: 24px;
+        margin-left: 12px;
+        padding: 0;
+        position: relative;
+        padding-left: 24px;
+        list-style-type: none;
+        text-align: left;
+
+        li {
+            display:block;
+            line-height: 28px;
+            margin-bottom: 8px;
+            clear: both;
+
+            &:before {
+                position: absolute;
+                left: 0;
+                content: "\2714";
+                float: left;
+                display: block;
+                width: 18px;
+                height: 28px;
+            }
+        }
+    }
+}

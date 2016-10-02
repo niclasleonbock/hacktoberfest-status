@@ -1,0 +1,42 @@
+.user {
+    padding: 22px 0;
+    margin: auto;
+    //background: $color-primary;
+    overflow: hidden;
+
+    &__img, &__info {
+        display: inline-block;
+    }
+
+    &__img {
+        //max-width: 128px !important;
+    }
+
+    &__info {
+        margin-left: 32px;
+        vertical-align: top;
+        h4 {
+            margin: 0;
+            line-height: 38px;
+            p {
+                margin-top: 2px;
+            }
+
+            &__social a {
+                color: $color-tertiary--dark;
+                border: 0;
+            }
+
+            @media screen and (max-width: 1024px) {
+                &__info {
+                    margin-left: 0;
+                    display: block;
+                }
+
+                &__img {
+                    display: none;
+                }
+            }
+        }
+    }
+}

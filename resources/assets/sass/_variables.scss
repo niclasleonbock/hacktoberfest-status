@@ -1,0 +1,25 @@
+/*$viewport-mobile:
+$viewport-tablet:
+$viewport-laptop: 1024px;
+$viewport-desktop:
+
+$font-size:*/
+
+$helpers-steps: 5;
+$helpers-max: 30;
+
+$color-body: #f4f1ec;
+
+$color-primary: #f4f1ec;
+$color-primary--dark: darken($color-primary, 8%);
+
+$color-secondary: #b0581d;
+$color-secondary--dark: darken($color-secondary, 8%);
+
+$color-tertiary: #3a3937;
+$color-tertiary--dark: darken($color-tertiary, 8%);
+
+$color-text: #000;
+
+$font-family-headline: "Montserrat", sans-serif;
+$font-family-text: "Montserrat", sans-serif;

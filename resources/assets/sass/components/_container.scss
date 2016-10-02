@@ -1,0 +1,24 @@
+.container {
+    width: 55%;
+    margin: 0 auto;
+
+    @media screen and (max-width: 1440px) {
+        width: 75%;
+    }
+
+    @media screen and (max-width: 1280px) {
+        width: 85%;
+    }
+
+    @media screen and (max-width: 1024px) {
+        width: 90%;
+    }
+
+    &.content {
+        margin: 40px auto;
+    }
+
+    &-wrapper {
+        background: $color-primary;
+    }
+}

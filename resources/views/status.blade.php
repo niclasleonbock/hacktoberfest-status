@@ -47,8 +47,12 @@
                 @else
                     @if ($prs->total_count >= 4)
                         <h2 class="mb-0">Congrats, you're done!</h2>
-                    @elseif ($prs->total_count > 2)
-                        <h2 class="mb-0">You're almost done.</h2>
+                    @elseif ($prs->total_count == 1)
+                        <h2 class="mb-0">A good start, just keep doing.</h2>
+                    @elseif ($prs->total_count == 2)
+                        <h2 class="mb-0">Half-time, keep doing.</h2>
+                    @else
+                      <h2 class="mb-0">You're almost done.</h2>
                     @endif
 
                     <p class="description">

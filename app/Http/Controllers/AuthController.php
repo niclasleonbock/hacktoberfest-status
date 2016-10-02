@@ -64,7 +64,7 @@ class AuthController extends Controller
         }
 
         return User::create([
-            'name' => $user->name,
+            'name' => $user->name ? $user->name : $user->nickname,
             'github_username' => $user->nickname,
             'github_id' => $user->id,
             'github_token' => $user->token,

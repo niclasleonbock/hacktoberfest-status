@@ -125,7 +125,7 @@ class PullRequestChecker
      */
     protected function getRepositoryName($repoUrl)
     {
-        return str_ireplace(self::API_HOST . self::API_ENDPOINT_REPO, '', $repoUrl);
+        return str_ireplace(self::API_BASE . self::API_ENDPOINT_REPO, '', $repoUrl);
     }
 
     /**

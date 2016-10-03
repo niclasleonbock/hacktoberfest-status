@@ -22,6 +22,10 @@ body {
     background-image: url(../images/background.jpg);
     background-size: cover;
 
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+
     // this is a fix for a chrome bug causing fonts to disappear
     // hopefully we can remove this in the future
     -webkit-animation-duration: 0.1s;
@@ -29,6 +33,10 @@ body {
     -webkit-animation-iteration-count: 1;
     -webkit-animation-timing-function: linear;
     -webkit-animation-delay: 0.1s;
+}
+
+html {
+    height: 100%;
 }
 
 @-webkit-keyframes fontfix{
@@ -49,10 +57,13 @@ main, footer {
 
 main {
     overflow: hidden;
+    flex: 1;
 }
 
 footer {
     text-align: center;
+
+    
 }
 
 p {

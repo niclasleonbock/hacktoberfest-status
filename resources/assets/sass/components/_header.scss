@@ -1,10 +1,8 @@
 header.banner {
-    //background: $color-primary;
     color: $color-text;
-    margin: auto;
 
     .container--header {
-        padding: 60px 0;
+        padding: 60px 0 50px;
         position: relative;
     }
 
@@ -16,15 +14,8 @@ header.banner {
 
     h1 {
         margin-top: 24px;
+        margin-bottom: 12px;
     }
-
-
-    //@media screen and (min-width: 769px) {
-        h1 {
-            margin-bottom: 12px;
-        }
-    //}
-
 
     h3 {
         margin-top: 0;
@@ -37,22 +28,30 @@ header.banner {
         font-weight: 400;
         margin: auto;
         margin-bottom: 24px;
-        width: 80%;
+        width: 65%;
     }
 
-    &--with-image {
-        color: #fff;
+    &--with-background {
+        color: $color-header;
         border-color: #fff;
+        background-image: radial-gradient(circle, #3241a6 0, #202a6b 120%);
 
         a {
-            color: $color-primary;
+            color: $color-header;
             border-color: $color-primary;
 
-            &:hover, &focus {
-                color: $color-secondary;
-                border-color: $color-secondary;
+            &:hover, &:focus, &:active {
+                color: #ff9566;
+                border-color: $color-primary--dark;
             }
         }
+    }
+
+    &--home {
+        height: calc(100vh - 80px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     @media screen and (min-width: 769px) {
@@ -64,9 +63,6 @@ header.banner {
                 margin-top: 0;
                 font-weight: 400;
             }
-        }
-        &--with-padding {
-            padding: 145px 0;
         }
     }
 }

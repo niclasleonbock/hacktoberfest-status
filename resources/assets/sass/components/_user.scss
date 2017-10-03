@@ -1,7 +1,6 @@
 .user {
     padding: 22px 0;
     margin: auto;
-    //background: $color-primary;
     overflow: hidden;
 
     &__img, &__info {
@@ -9,22 +8,23 @@
     }
 
     &__img {
-        //max-width: 128px !important;
+        border-radius: 3px;
+        box-shadow: 0 2px 30px rgba(9,11,29,.3);
     }
 
     &__info {
         margin-left: 32px;
         vertical-align: top;
+
         h4 {
-            margin: 0;
+            text-align: left;
+            margin-top: 10px;
+            margin-bottom: 0;
             line-height: 38px;
+            font-size: 18px;
+
             p {
                 margin-top: 2px;
-            }
-
-            &__social a {
-                color: $color-tertiary--dark;
-                border: 0;
             }
 
             @media screen and (max-width: 1024px) {

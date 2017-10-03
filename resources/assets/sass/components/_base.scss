@@ -19,8 +19,6 @@ body {
     word-wrap: break-word;
     hyphens: manual;
     box-sizing: border-box;
-    background-image: url(../images/background.jpg);
-    background-size: cover;
 
     min-height: 100%;
     display: flex;
@@ -106,16 +104,18 @@ a {
 
     &.btn {
         border: none;
-        background: $color-secondary;
+        background: $color-primary;
+        box-shadow: 0 2px 30px rgba(9,11,29,0.3);
         color: #fff;
-        padding: 12px 28px;
+        padding: 12px 38px;
         border-radius: 3px;
         display: inline-block;
+        transition: background-color 0.25s ease-in-out;
 
-        &:hover, &:focus {
+        &:hover, &:focus, &:active {
             border: none !important;
-            background: $color-tertiary;
-            color: $color-primary--dark !important;
+            background: $color-primary--dark;
+            color: #fff !important;
         }
     }
 }
@@ -126,4 +126,8 @@ a {
         color: $color-secondary--dark;
         border-color: $color-secondary--dark;
     }
+}
+
+.display--inline-block {
+    display: inline-block;
 }

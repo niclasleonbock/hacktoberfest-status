@@ -28,7 +28,6 @@ header.banner {
         font-weight: 400;
         margin: auto;
         margin-bottom: 24px;
-        width: 65%;
     }
 
     &--with-background {
@@ -63,6 +62,10 @@ header.banner {
                 margin-top: 0;
                 font-weight: 400;
             }
+        }
+
+        p.description {
+            width: 65%;
         }
     }
 }

@@ -6,16 +6,22 @@
         flex-wrap: wrap;
         margin-right: -.5rem;
         margin-left: -.5rem;
+        padding: 0;
     }
 
     &__box {
-        flex-basis: calc(25% - 16px);
-        max-width: calc(25% - 16px);
-        flex: 0 0 auto;
-
-        margin-right: 8px;
-        margin-left: 8px;
+        display: block;
+        width: 100%;
         margin-top: 20px;
+
+        @media screen and (min-width: 769px) {
+            flex-basis: calc(25% - 16px);
+            max-width: calc(25% - 16px);
+            flex: 0 0 auto;
+
+            margin-right: 8px;
+            margin-left: 8px;
+        }
 
         background-color: #fff;
         border: 1px solid rgba(224,224,224,0.5);

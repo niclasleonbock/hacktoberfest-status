@@ -26,16 +26,15 @@
             p {
                 margin-top: 2px;
             }
+        }
+    }
 
-            @media screen and (max-width: 1024px) {
-                &__info {
-                    margin-left: 0;
-                    display: block;
-                }
-
-                &__img {
-                    display: none;
-                }
+    @media screen and (max-width: 769px) {
+        &__info {
+            margin-left: 0;
+            display: block;
+            &, h4 {
+                text-align: center;
             }
         }
     }

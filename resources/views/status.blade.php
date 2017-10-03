@@ -12,7 +12,7 @@
         </style>
     </head>
     <body>
-        <header class="banner banner--with-image">
+        <header class="banner banner--with-background">
             <div class="container container--header">
                 <div class="container__content centered">
                     <img src="{{ asset('images/logo.svg') }}" alt="Hacktoberfest Logo">
@@ -20,7 +20,7 @@
                     <p class="mb-30 mt-30 description">This little tool helps you to track your <a href="https://hacktoberfest.digitalocean.com/">Hacktoberfest</a> status. Below you can see how far you have already come.</p>
 
                     <div class="user">
-                        <img class="user__img" src="{{ $user->github_avatar }}" title="{{ $user->name }}" width="64">
+                        <img class="user__img" src="{{ $user->github_avatar }}" title="{{ $user->name }}" width="84">
 
                         <div class="user__info">
                             <h4 id="user__info__name"><a href="https://github.com/{{ $user->github_username }}">{{ $user->name }}</a></h4>
@@ -30,7 +30,8 @@
                             </div>
                         </div>
                     </div>
-                    <a class="btn mt-20" href="{{ url('auth/signout') }}">Sign out</a>
+
+                    <a class="display--inline-block mt-30" href="{{ url('auth/signout') }}">Sign out</a>
                 </div>
             </div>
         </header>
@@ -46,25 +47,33 @@
                     </div>
                 @else
                     @if ($prs->total_count >= 4)
-                        <h2 class="mb-0">Congrats, you're done!</h2>
+                        <h2 class="mb-0 centered">Congrats, you're done!</h2>
                     @elseif ($prs->total_count == 1)
-                        <h2 class="mb-0">A good start, just keep doing.</h2>
+                        <h2 class="mb-0 centered">A good start, just keep doing.</h2>
                     @elseif ($prs->total_count == 2)
-                        <h2 class="mb-0">Half-time, keep doing.</h2>
+                        <h2 class="mb-0 centered">Half-time, keep doing.</h2>
                     @else
-                      <h2 class="mb-0">You're almost done.</h2>
+                      <h2 class="mb-0 centered">You're almost done.</h2>
                     @endif
 
-                    <p class="description">
+                    <p class="description centered">
                         Your qualified pull requests:
                     </p>
                     <div class="summary">
-
-                        <ul>
+                        <ul class="summary__list">
                             @foreach ($prs->items as $item)
-                            <li>
-                                <a href="{{ $item->html_url }}" class="tooltip" data-title="Created {{ $item->created_at }}">{{ $item->title }}</a>
-                                in <a href="{{ $item->repo->html_url }}" class="tooltip" data-title="{{ $item->repo->description }}">{{ $item->repo->full_name }}</a>
+                            <li class="summary__box">
+                                <div class="summary__box__header">
+                                    <h3>
+                                        <a href="{{ $item->html_url }}" class="tooltip" data-title="{{ $item->title }}">{{ str_limit($item->title, 32) }}</a>
+                                    </h3>
+                                </div>
+                                <p class="summary__box__meta">
+                                    Created in <a href="{{ $item->repo->html_url }}" class="tooltip" data-title="{{ $item->repo->full_name }}">{{ $item->repo->name }}</a> {{ \Carbon\Carbon::createFromTimeStamp(strtotime($item->created_at))->diffForHumans() }}.
+                                </p>
+                                <div class="summary__box__content">
+                                    <p>{{ str_limit(strip_tags($item->body), 140) }}</p>
+                                </div>
                             </li>
                             @endforeach
                         </ul>

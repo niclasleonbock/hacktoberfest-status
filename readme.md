@@ -9,8 +9,8 @@ This little tool helps you to track your Hacktoberfest status.
 1. Clone the repository 
 
         git clone https://github.com/niclasleonbock/hacktoberfest-status.git
-2. Run `composer install` to install composer packages/dependancies 
-3. (Optionally) Run `npm install` to install node packages/dependancies
+2. Run `composer install` to install composer packages/dependencies 
+3. (Optionally) Run `npm install` to install node packages/dependencies
 4. Create your `.env` file by copying the example provided in the repository 
         
         cp .env.example .env

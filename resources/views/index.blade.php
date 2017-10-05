@@ -4,6 +4,11 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="keywords" content="hacktoberfest, status, checker, tracker">
+        <meta name="description" content="This little tool helps you to track you Hacktoberfest status">
+        <meta property="og:title" content="Hacktoberfest Status Tracker" />
+        <meta property="og:description" content="This little tool helps you to track your Hacktoberfest status" />
+        <meta property="og:image" content="https://nyc3.digitaloceanspaces.com/hacktoberfest/Hacktoberfest17-TWFB-02.png" />
 
         <title>Hacktoberfest Status Tracker</title>
 

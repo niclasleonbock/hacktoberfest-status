@@ -4,10 +4,8 @@ namespace App\Hacktoberfest\OAuth;
 
 use Laravel\Socialite\SocialiteManager as BaseSocialiteManager;
 
-
 class SocialiteManager extends BaseSocialiteManager
 {
-
     /**
      * Create the instance of our own Github provider.
      *
@@ -18,9 +16,8 @@ class SocialiteManager extends BaseSocialiteManager
         $config = $this->app['config']['services.github'];
 
         return $this->buildProvider(
-            'App\Hacktoberfest\OAuth\Providers\ScopelessGithubProvider', $config
+            'App\Hacktoberfest\OAuth\Providers\ScopelessGithubProvider',
+            $config
         );
     }
-
 }
-

@@ -9,7 +9,6 @@ use Exception;
 
 class AuthController extends Controller
 {
-
     /**
      * Redirect the user to the GitHub authentication page.
      *
@@ -71,5 +70,4 @@ class AuthController extends Controller
             'github_avatar' => $user->avatar
         ]);
     }
-
 }

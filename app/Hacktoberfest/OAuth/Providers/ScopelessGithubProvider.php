@@ -6,7 +6,6 @@ use Laravel\Socialite\Two\GithubProvider;
 
 class ScopelessGithubProvider extends GithubProvider
 {
-
     /**
      * The scopes being requested.
      * Set to empty because we do not need any person information.
@@ -14,5 +13,4 @@ class ScopelessGithubProvider extends GithubProvider
      * @var array
      */
     protected $scopes = [];
-
 }

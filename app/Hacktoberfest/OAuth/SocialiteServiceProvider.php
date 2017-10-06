@@ -6,7 +6,6 @@ use Laravel\Socialite\SocialiteServiceProvider as BaseSocialiteServiceProvider;
 
 class SocialiteServiceProvider extends BaseSocialiteServiceProvider
 {
-
     /**
      * Register the service provider.
      *
@@ -18,5 +17,4 @@ class SocialiteServiceProvider extends BaseSocialiteServiceProvider
             return new SocialiteManager($app);
         });
     }
-
 }

@@ -8,3 +8,7 @@ install:
   - php artisan key:generate
   - touch database/database.sqlite
   - php artisan migrate
+
+script:
+  - ./vendor/bin/phpcs --standard=PSR2 app
+  - phpunit

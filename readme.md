@@ -4,6 +4,11 @@ This little tool helps you to track your Hacktoberfest status.
 
 *Hacktoberfest Status Checker* is available online at [hacktoberfest.bock.rocks](https://hacktoberfest.bock.rocks/).
 
+## Build
+We're using Travis CI to automatically run tests. Feel free to add some more. 
+
+`develop`: [![Build Status](https://travis-ci.org/niclasleonbock/hacktoberfest-status.svg?branch=develop)](https://travis-ci.org/niclasleonbock/hacktoberfest-status)
+
 ## Installation
 
 1. Clone the repository 

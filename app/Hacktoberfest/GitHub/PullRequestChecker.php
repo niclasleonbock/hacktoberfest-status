@@ -6,7 +6,6 @@ use GuzzleHttp\Client;
 
 class PullRequestChecker
 {
-
     /**
      * API base URL consisting of scheme and hostname.
      */
@@ -38,7 +37,7 @@ class PullRequestChecker
      * @param Cache $cache
      * @return void
      */
-    function __construct($cache)
+    public function __construct($cache)
     {
         $this->client = new Client([
             'base_uri' => self::API_BASE,
@@ -97,7 +96,8 @@ class PullRequestChecker
      * @param string $token
      * @return repository information
      */
-    protected function getRepositoryInfo($repoName, $token) {
+    protected function getRepositoryInfo($repoName, $token)
+    {
         $cacheKey = 'repo_' . $repoName;
 
         if ($this->cache->has($cacheKey)) {
@@ -130,7 +130,7 @@ class PullRequestChecker
 
     /**
      * Fetches all qualified pull requests from the GitHub API.
-     * 
+     *
      * @param User $user
      * @return list of qualified pull requests
      */
@@ -156,6 +156,4 @@ class PullRequestChecker
 
         return $prs;
     }
-
 }
-

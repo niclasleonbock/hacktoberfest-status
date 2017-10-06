@@ -7,7 +7,6 @@ use App\Hacktoberfest\GitHub\PullRequestChecker;
 
 class HomeController extends Controller
 {
-
     /**
      * Instance of the 'pull request checker'.
      */
@@ -45,6 +44,4 @@ class HomeController extends Controller
 
         return view('index');
     }
-
 }
-

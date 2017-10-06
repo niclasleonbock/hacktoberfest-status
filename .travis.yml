@@ -11,4 +11,4 @@ install:
 
 script:
   - ./vendor/bin/phpcs --standard=PSR2 app
-  - phpunit
+  - $TRAVIS_BUILD_DIR/vendor/bin/phpunit

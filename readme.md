@@ -7,7 +7,8 @@ This little tool helps you to track your Hacktoberfest status.
 ## Build
 We're using Travis CI to automatically run tests. Feel free to add some more. 
 
-`develop`: [![Build Status](https://travis-ci.org/niclasleonbock/hacktoberfest-status.svg?branch=develop)](https://travis-ci.org/niclasleonbock/hacktoberfest-status)
+[![Build Status](https://travis-ci.org/niclasleonbock/hacktoberfest-status.svg?branch=develop)](https://travis-ci.org/niclasleonbock/hacktoberfest-status)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/niclasleonbock/hacktoberfest-status/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/niclasleonbock/hacktoberfest-status/?branch=develop) (on develop)
 
 ## Installation
 

@@ -50,7 +50,7 @@ class PullRequestChecker
     /**
      * Returns the start date of the hacktober month.
      *
-     * @return date string
+     * @return string the date
      */
     protected function getStartDate()
     {
@@ -60,7 +60,7 @@ class PullRequestChecker
     /**
      * Returns the start end of the hacktober month.
      *
-     * @return date string
+     * @return string the date
      */
     protected function getEndDate()
     {
@@ -71,7 +71,8 @@ class PullRequestChecker
      * Builds the query string for querying the GitHub API.
      *
      * @param string $username
-     * @return query string
+     *
+     * @return string the query
      */
     protected function getQuery($username)
     {
@@ -82,7 +83,7 @@ class PullRequestChecker
     /**
      * Returns the instance of the Guttle HTTP client.
      *
-     * @return Guzzle client
+     * @return GuzzleHttp\Client client
      */
     protected function getClient()
     {
@@ -94,7 +95,7 @@ class PullRequestChecker
      *
      * @param string $repoName
      * @param string $token
-     * @return repository information
+     * @return mixed information
      */
     protected function getRepositoryInfo($repoName, $token)
     {
@@ -121,7 +122,7 @@ class PullRequestChecker
      * Extracts the repo name from the repo URL.
      *
      * @param string $repoUrl
-     * @return repo name
+     * @return mixed name
      */
     protected function getRepositoryName($repoUrl)
     {
@@ -132,7 +133,7 @@ class PullRequestChecker
      * Fetches all qualified pull requests from the GitHub API.
      *
      * @param User $user
-     * @return list of qualified pull requests
+     * @return array the list of qualified pull requests
      */
     public function getQualifiedPullRequests($user)
     {

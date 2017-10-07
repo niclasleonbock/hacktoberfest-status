@@ -15,8 +15,8 @@ class HomeController extends Controller
     /**
      * Create a new controller instance.
      *
-     * @param  PullRequestChecker  $prChecker
-     * @return void
+     * @param PullRequestChecker $checker
+     * @internal param PullRequestChecker $prChecker
      */
     public function __construct(PullRequestChecker $checker)
     {
@@ -27,13 +27,13 @@ class HomeController extends Controller
      * Display the current status if the user already signed in via GitHubs' OAuth API.
      * Display some infotext and the sign in button otherwise.
      *
-     * @return Response
+     * @return Illuminate\View\View
      */
     public function index()
     {
         if (Auth::check()) {
             $user = Auth::user();
-           
+
             $prs = $this->checker->getQualifiedPullRequests($user);
 
             return view('status', [

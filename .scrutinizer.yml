@@ -2,7 +2,6 @@ checks:
     php: true
 
 filter:
-    excluded_paths:
-      - tests/*
+    paths: ['app/*']
     dependency_paths:
       - vendor/*

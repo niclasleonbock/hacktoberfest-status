@@ -12,7 +12,7 @@ class AuthController extends Controller
     /**
      * Redirect the user to the GitHub authentication page.
      *
-     * @return Response
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
      */
     public function redirectToProvider()
     {
@@ -22,7 +22,7 @@ class AuthController extends Controller
     /**
      * Obtain the user information from GitHub.
      *
-     * @return Response
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
      */
     public function handleProviderCallback()
     {

@@ -76,7 +76,7 @@ class PullRequestChecker
      */
     protected function getQuery($username)
     {
-        return 'q=author:' . $username . '+type:pr+created:' .
+        return 'q=-label:invalid+author:' . $username . '+is:public+type:pr+created:' .
             $this->getStartDate() . '..' . $this->getEndDate();
     }
 

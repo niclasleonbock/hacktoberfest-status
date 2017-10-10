@@ -7,6 +7,14 @@ use App\User;
 
 class ShareController extends Controller
 {
+    /**
+     * Display a user's PR status if user already authorized this app,
+     * otherwise redirect to home page.
+     *
+     * @param PullRequestChecker $checker
+     * @param $github_username
+     * @return \Illuminate\Routing\Redirector|\Illuminate\View\View
+     */
     public function index(PullRequestChecker $checker, $github_username)
     {
         $user = User::where('github_username', '=', $github_username)->first();

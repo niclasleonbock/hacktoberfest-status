@@ -27,7 +27,7 @@ class HomeController extends Controller
      * Display the current status if the user already signed in via GitHubs' OAuth API.
      * Display some infotext and the sign in button otherwise.
      *
-     * @return Illuminate\View\View
+     * @return \Illuminate\View\View
      */
     public function index()
     {

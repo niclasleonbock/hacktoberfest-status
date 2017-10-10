@@ -40,7 +40,7 @@
                     </div>
 
                     @if(Auth::check() && isset($message))
-                        <div class="share mb-2">
+                        <div class="share mt-10">
                             <a class="twitter-share-button"
                                href="https://twitter.com/intent/tweet?text={{ $message }}&url={{ route('share', ['github_username' => $user->github_username]) }}&hashtags=Hacktoberfest"
                                target="_blank"

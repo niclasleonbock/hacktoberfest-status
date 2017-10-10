@@ -36,10 +36,12 @@ class HomeController extends Controller
 
             $prs = $this->checker->getQualifiedPullRequests($user);
 
-            return view('status', [
-                'user' => $user,
-                'prs' => $prs
-            ]);
+            $message = "I'm about to start hacking for Hacktoberfest!";
+            if ($prs->total_count > 0) {
+                $message = "I've completed $prs->total_count pull requests for Hacktoberfest!";
+            }
+
+            return view('status', compact('user', 'prs', 'message'));
         }
 
         return view('index');

@@ -12,6 +12,14 @@
         </style>
     </head>
     <body>
+    <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
         <header class="banner banner--with-background">
             <div class="container container--header">
                 <div class="container__content centered">
@@ -31,7 +39,16 @@
                         </div>
                     </div>
 
-                    <a class="display--inline-block mt-30" href="{{ url('auth/signout') }}">Sign out</a>
+                    @if(Auth::check() && isset($message))
+                        <div class="share mb-2">
+                            <a class="twitter-share-button"
+                               href="https://twitter.com/intent/tweet?text={{ $message }}&url={{ route('share', ['github_username' => $user->github_username]) }}&hashtags=Hacktoberfest"
+                               target="_blank"
+                            > Tweet</a>
+                            <div class="fb-share-button" data-href="{{ route('share', ['github_username' => $user->github_username]) }}" data-layout="button" data-size="small" data-mobile-iframe="true"></div>
+                        </div>
+                        <a class="display--inline-block mt-30" href="{{ url('auth/signout') }}">Sign out</a>
+                    @endif
                 </div>
             </div>
         </header>
@@ -95,6 +112,24 @@
           function css(e){var n=window.document.createElement("link"),t=window.document.getElementsByTagName("head")[0];n.rel="stylesheet",n.href=e,n.media="only x",t.parentNode.insertBefore(n,t),setTimeout(function(){n.media="all"},0)}
             css('{{ asset('css/app.css') }}');
         </script>
+        <script>
+            // https://dev.twitter.com/web/javascript/loading
+            window.twttr = (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0],
+                t = window.twttr || {};
+            if (d.getElementById(id)) return t;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://platform.twitter.com/widgets.js";
+            fjs.parentNode.insertBefore(js, fjs);
+
+            t._e = [];
+            t.ready = function(f) {
+                t._e.push(f);
+            };
+
+            return t;
+        }(document, "script", "twitter-wjs"));</script>
         <noscript>
           <!-- Let's not assume anything -->
           <link rel="stylesheet" href="{{ asset('css/app.css') }}">

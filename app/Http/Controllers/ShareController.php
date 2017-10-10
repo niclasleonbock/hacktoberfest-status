@@ -13,7 +13,7 @@ class ShareController extends Controller
      *
      * @param PullRequestChecker $checker
      * @param $github_username
-     * @return \Illuminate\Routing\Redirector|\Illuminate\View\View
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
     public function index(PullRequestChecker $checker, $github_username)
     {

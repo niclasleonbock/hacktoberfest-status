@@ -16,3 +16,5 @@ Route::get('/', 'HomeController@index');
 Route::get('auth', 'AuthController@redirectToProvider');
 Route::get('auth/callback', 'AuthController@handleProviderCallback');
 Route::get('auth/signout', 'AuthController@signOut');
+
+Route::get('{github_username}', 'ShareController@index')->name('share');

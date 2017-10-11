@@ -44,6 +44,13 @@ header.banner {
                 border-color: $color-primary--dark;
             }
         }
+
+        .share {
+            .twitter-share-button,
+            .fb-share-button {
+                vertical-align: middle;
+            }
+        }
     }
 
     &--home {

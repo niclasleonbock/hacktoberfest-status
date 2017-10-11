@@ -8,6 +8,22 @@ use App\User;
 class ShareController extends Controller
 {
     /**
+     * Indicates wether routes in this controller are in sharing mode.
+     *
+     * @var boolean
+     */
+    protected $sharingMode = true;
+
+    /**
+     * Create a new controller instance.
+     */
+    public function __construct()
+    {
+        $this->sharingMode = true;
+        parent::__construct();
+    }
+
+    /**
      * Display a user's PR status if user already authorized this app,
      * otherwise redirect to home page.
      *
@@ -25,6 +41,9 @@ class ShareController extends Controller
 
         $prs = $checker->getQualifiedPullRequests($user);
 
-        return view('status', compact('user', 'prs'));
+        $viewData = compact('user', 'prs');
+        $viewData['sharingMode'] = $this->sharingMode;
+
+        return view('status', $viewData);
     }
 }

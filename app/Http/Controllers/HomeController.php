@@ -9,8 +9,11 @@ class HomeController extends Controller
 {
     /**
      * Instance of the 'pull request checker'.
+     *
+     * @var PullRequestChecker
      */
     protected $checker;
+
 
     /**
      * Create a new controller instance.
@@ -33,15 +36,18 @@ class HomeController extends Controller
     {
         if (Auth::check()) {
             $user = Auth::user();
-
             $prs = $this->checker->getQualifiedPullRequests($user);
 
             $message = "I'm about to start hacking for Hacktoberfest!";
+
             if ($prs->total_count > 0) {
                 $message = "I've completed $prs->total_count pull requests for Hacktoberfest!";
             }
 
-            return view('status', compact('user', 'prs', 'message'));
+            $viewData = compact('user', 'prs', 'message');
+            $viewData['sharingMode'] = $this->sharingMode;
+
+            return view('status', $viewData);
         }
 
         return view('index');

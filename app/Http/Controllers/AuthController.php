@@ -37,7 +37,7 @@ class AuthController extends Controller
     /**
      * Log the current user out.
      *
-     * @return Response
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
      */
     public function signOut()
     {

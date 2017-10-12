@@ -34,7 +34,7 @@ class PullRequestChecker
     /**
      * Creates a new instance of the pull request checker.
      *
-     * @param Cache $cache
+     * @param \Cache $cache
      * @return void
      */
     public function __construct($cache)
@@ -83,7 +83,7 @@ class PullRequestChecker
     /**
      * Returns the instance of the Guttle HTTP client.
      *
-     * @return GuzzleHttp\Client client
+     * @return \GuzzleHttp\Client client
      */
     protected function getClient()
     {
@@ -132,7 +132,7 @@ class PullRequestChecker
     /**
      * Fetches all qualified pull requests from the GitHub API.
      *
-     * @param User $user
+     * @param \App\User $user
      * @return array the list of qualified pull requests
      */
     public function getQualifiedPullRequests($user)

@@ -137,6 +137,12 @@ class PullRequestChecker
      */
     public function getQualifiedPullRequests($user)
     {
+        $cacheKey = 'prs_' . $user->github_username;
+
+        if ($this->cache->has($cacheKey)) {
+            return $this->cache->get($cacheKey);
+        }
+
         $response = $this->getClient()->request('GET', self::API_ENDPOINT_SEARCH, [
             'query' => $this->getQuery($user->github_username),
             'headers' => [
@@ -154,6 +160,9 @@ class PullRequestChecker
                 );
             }
         }
+
+        //Put in Cache
+        $this->cache->put($cacheKey, $prs, 0.33); // 20 seconds Timeout
 
         return $prs;
     }

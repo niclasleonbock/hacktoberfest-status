@@ -5,7 +5,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Hacktoberfest Status Tracker</title>
+        <meta property="og:title" content="Hacktoberfest stats of {{ $user->github_username }}" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://hacktoberfest.bock.rocks/{{ $user->github_username }}" />
+        <meta property="og:image" content="{{ $user->github_avatar }}" />
+        <meta property="og:description" content="{{ $user->github_username }} completed {{ $prs->total_count }} pull requests for Hacktoberfest!" />
+
+        <title>Hacktoberfest stats of {{ $user->github_username }}</title>
 
         <style>
             {!! file_get_contents(public_path('css/preload.css')) !!}

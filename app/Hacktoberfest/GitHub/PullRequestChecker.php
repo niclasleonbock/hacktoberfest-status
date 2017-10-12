@@ -162,7 +162,7 @@ class PullRequestChecker
         }
 
         //Put in Cache
-        $this->cache->put($cacheKey, $prs, 20); // 20 seconds Timeout
+        $this->cache->put($cacheKey, $prs, 0.33); // 20 seconds Timeout
 
         return $prs;
     }

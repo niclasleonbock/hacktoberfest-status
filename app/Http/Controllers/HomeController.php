@@ -16,7 +16,6 @@ class HomeController extends Controller
      * Create a new controller instance.
      *
      * @param PullRequestChecker $checker
-     * @internal param PullRequestChecker $prChecker
      */
     public function __construct(PullRequestChecker $checker)
     {

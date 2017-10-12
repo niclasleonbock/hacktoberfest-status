@@ -5,6 +5,13 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+/**
+ * @property string $name
+ * @property string $github_username
+ * @property string $github_id
+ * @property string $github_token
+ * @property string $github_avatar
+ */
 class User extends Authenticatable
 {
     use Notifiable;

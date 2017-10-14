@@ -8,18 +8,38 @@ use App\User;
 class ShareController extends Controller
 {
     /**
+     * Instance of the 'pull request checker'.
+     *
+     * @var PullRequestChecker
+     */
+    protected $checker;
+
+    /**
+     * Instance of user model.
+     *
+     * @var User
+     */
+    protected $user;
+
+    /**
      * Indicates wether routes in this controller are in sharing mode.
      *
      * @var boolean
      */
     protected $sharingMode = true;
 
+
     /**
      * Create a new controller instance.
+     *
+     * @param PullRequestChecker $checker
      */
-    public function __construct()
+    public function __construct(PullRequestChecker $checker, User $user)
     {
+        $this->checker     = $checker;
+        $this->user        = $user;
         $this->sharingMode = true;
+
         parent::__construct();
     }
 
@@ -27,19 +47,19 @@ class ShareController extends Controller
      * Display a user's PR status if user already authorized this app,
      * otherwise redirect to home page.
      *
-     * @param PullRequestChecker $checker
-     * @param $github_username
+     * @param string $github_username
+     *
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\View\View
      */
-    public function index(PullRequestChecker $checker, $github_username)
+    public function index($github_username)
     {
-        $user = User::where('github_username', '=', $github_username)->first();
+        $user = $this->user->where('github_username', '=', $github_username)->first();
 
         if (!$user) {
             return redirect('/');
         }
 
-        $prs = $checker->getQualifiedPullRequests($user);
+        $prs = $this->checker->getQualifiedPullRequests($user);
 
         $viewData = compact('user', 'prs');
         $viewData['sharingMode'] = $this->sharingMode;

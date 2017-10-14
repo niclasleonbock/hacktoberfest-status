@@ -1,79 +1,68 @@
 <?php
-
 use App\Hacktoberfest\GitHub\PullRequestChecker;
 use App\Http\Controllers\HomeController;
 use App\User;
-use Auth;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 
+/**
+ * Test cases for the shared status page.
+ */
 class StatusPageTest extends TestCase
 {
     /**
-     * Verify that the shared status page has meta/og tags.
+     * Tests that the shared status page redirects to the home page if the user name is unknown.
      */
-    public function testSharedStatusPageHasMetaOg()
+    public function testRedirectIfUserUnknown()
     {
-        $this->visit('/Tardog')
-            ->see('meta property="og:');
+        $userModel = Mockery::mock(User::class);
+        $pullRequestChecker = Mockery::mock(PullRequestChecker::class);
+
+        $this->app->instance(PullRequestChecker::class, $pullRequestChecker);
+        $this->app->instance(User::class, $userModel);
+
+        $collection = $this->createCollectionMockWithFirst(null);
+
+        $userModel->shouldReceive('where')
+            ->once()
+            ->with('github_username', '=', 'TestUser')
+            ->andReturn($collection);
+
+        $pullRequestChecker
+            ->shouldNotReceive('getQualifiedPullRequests');
+
+        $this->visit('/TestUser')
+            ->seePageIs('/');
     }
 
     /**
-     * Verify that the status page has no meta/og tags if visited by an authenticated user.
+     * Tests that the shared status page for an existing user contains the expected meta tags.
      */
-    public function testNoMetaOgOnAuthenticatedStatusPage()
+    public function testSharedStatusPageForExistingUser()
     {
-        $user = new User([
+        $testUser = new User([
             'name'         => 'TestUser',
             'github_name'  => 'test_user',
             'github_token' => 'foobar',
         ]);
 
-        $this->be($user);
+        $userModel = Mockery::mock(User::class);
+        $pullRequestChecker = Mockery::mock(PullRequestChecker::class);
 
-        $pullRequestCheckerMock = $this->createMock(PullRequestChecker::class);
-        $pullRequestCheckerMock->expects($this->once())
-            ->method('getQualifiedPullRequests')
-            ->willReturn($this->buildFakePullRequestData(2));
+        $this->app->instance(PullRequestChecker::class, $pullRequestChecker);
+        $this->app->instance(User::class, $userModel);
 
-        $controller = new HomeController($pullRequestCheckerMock);
+        $collection = $this->createCollectionMockWithFirst($testUser);
 
-        $view    = $controller->index();
-        $content = $view->render();
+        $userModel->shouldReceive('where')
+            ->once()
+            ->with('github_username', '=', 'TestUser')
+            ->andReturn($collection);
 
-        $this->assertNotContains('meta property="og:', $content);
-    }
+        $pullRequestChecker
+            ->shouldReceive('getQualifiedPullRequests')
+            ->once()
+            ->andReturn($this->buildFakePullRequestData(3));
 
-    /**
-     * Create fake pull request data matching the format expected by the Github API.
-     *
-     * @param  integer $count
-     * @return object
-     */
-    protected function buildFakePullRequestData($count)
-    {
-        $fakeRepo            = new stdClass();
-        $fakeRepo->html_url  = 'https://github.com/NotARealRepo';
-        $fakeRepo->full_name = 'NotARealRepo';
-        $fakeRepo->name      = 'NotARealRepo';
-
-        $pullRequests                     = new stdClass();
-        $pullRequests->total_count        = $count;
-        $pullRequests->incomplete_results = false;
-        $pullRequests->items              = [];
-
-        for ($i=0; $i < $count; $i++) { 
-            $fakePr             = new stdClass();
-            $fakePr->html_url   = 'https://github.com/NotARealRepo';
-            $fakePr->title      = 'Test PR';
-            $fakePr->repo       = $fakeRepo;
-            $fakePr->created_at = '2017-10-01T00:00:00Z';
-            $fakePr->body       = '';
-            
-            $pullRequests->items[] = $fakePr;
-        }
-
-        return $pullRequests;
+        $this->visit('/TestUser')
+            ->see('meta property="og:title" content="Hacktoberfest Status of TestUser');
     }
 }

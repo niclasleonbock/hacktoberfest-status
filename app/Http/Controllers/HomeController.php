@@ -9,14 +9,16 @@ class HomeController extends Controller
 {
     /**
      * Instance of the 'pull request checker'.
+     *
+     * @var PullRequestChecker
      */
     protected $checker;
+
 
     /**
      * Create a new controller instance.
      *
      * @param PullRequestChecker $checker
-     * @internal param PullRequestChecker $prChecker
      */
     public function __construct(PullRequestChecker $checker)
     {
@@ -31,19 +33,22 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (Auth::check()) {
-            $user = Auth::user();
-
-            $prs = $this->checker->getQualifiedPullRequests($user);
-
-            $message = "I'm about to start hacking for Hacktoberfest!";
-            if ($prs->total_count > 0) {
-                $message = "I've completed $prs->total_count pull requests for Hacktoberfest!";
-            }
-
-            return view('status', compact('user', 'prs', 'message'));
+        if (!Auth::check()) {
+            return view('index');
         }
 
-        return view('index');
+        $user = Auth::user();
+        $prs = $this->checker->getQualifiedPullRequests($user);
+
+        $message = "I'm about to start hacking for Hacktoberfest!";
+
+        if ($prs->total_count > 0) {
+            $message = "I've completed $prs->total_count pull requests for Hacktoberfest!";
+        }
+
+        $viewData = compact('user', 'prs', 'message');
+        $viewData['sharingMode'] = $this->sharingMode;
+
+        return view('status', $viewData);
     }
 }

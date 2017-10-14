@@ -10,4 +10,20 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    /**
+     * Indicates wether the application operates in sharing mode.
+     *
+     * @var boolean
+     */
+    protected $sharingMode = false;
+
+
+    /**
+     * Create a new controller instance.
+     */
+    public function __construct()
+    {
+        view()->share(['sharingMode' => $this->sharingMode]);
+    }
 }

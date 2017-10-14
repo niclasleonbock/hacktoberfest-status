@@ -12,7 +12,7 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     /**
-     * Indicates weather routes in this controller are in sharing mode.
+     * Indicates wether the application operates in sharing mode.
      *
      * @var boolean
      */

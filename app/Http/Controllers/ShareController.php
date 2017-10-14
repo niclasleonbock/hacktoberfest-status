@@ -21,13 +21,6 @@ class ShareController extends Controller
      */
     protected $user;
 
-    /**
-     * Indicates wether routes in this controller are in sharing mode.
-     *
-     * @var boolean
-     */
-    protected $sharingMode = true;
-
 
     /**
      * Create a new controller instance.

@@ -11,6 +11,8 @@
             <meta property="og:image" content="https://nyc3.digitaloceanspaces.com/hacktoberfest/Hacktoberfest17-TWFB-02.png" />
         @endif
 
+        @include('partials.favicon')
+
         <title>{{ $sharingMode ? 'Hacktoberfest Status of ' . $user->name : 'Hacktoberfest Status Tracker' }}</title>
 
         <style>

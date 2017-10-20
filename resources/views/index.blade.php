@@ -10,6 +10,8 @@
         <meta property="og:description" content="This little tool helps you to track your Hacktoberfest status" />
         <meta property="og:image" content="https://nyc3.digitaloceanspaces.com/hacktoberfest/Hacktoberfest17-TWFB-02.png" />
 
+        @include('partials.favicon')
+
         <title>Hacktoberfest Status Tracker</title>
 
         <style>

@@ -46,7 +46,7 @@
                             <h4 id="user__info__name"><a href="https://github.com/{{ $user->github_username }}">{{ $user->name }}</a></h4>
 
                             <div class="user__info__status">
-                                {!! $prs->total_count >= 4 ? '<span class="complete">✔</span>' : '<span class="incomplete">✘</span>' !!} {{ $prs->total_count }} / 4 pull requests done
+                                {!! $prs->total_count >= 5 ? '<span class="complete">✔</span>' : '<span class="incomplete">✘</span>' !!} {{ $prs->total_count }} / 5 pull requests done
                             </div>
                         </div>
                     </div>
@@ -80,14 +80,16 @@
                     </div>
                 @else
                     @if (!$sharingMode)
-                        @if ($prs->total_count >= 4)
+                        @if ($prs->total_count >= 5)
                             <h2 class="mb-0 centered">Congrats, you're done!</h2>
                         @elseif ($prs->total_count == 1)
                             <h2 class="mb-0 centered">A good start, just keep doing.</h2>
                         @elseif ($prs->total_count == 2)
-                            <h2 class="mb-0 centered">Half-time, keep doing.</h2>
+                            <h2 class="mb-0 centered">Almost halfway there, keep doing.</h2>
+                        @elseif ($prs->total_count == 3)
+                            <h2 class="mb-0 centered">Only 2 left, let's keep doing.</h2>
                         @else
-                        <h2 class="mb-0 centered">You're almost done.</h2>
+                            <h2 class="mb-0 centered">You're almost done.</h2>
                         @endif
                         <p class="description centered">Your qualified pull requests:</p>
                     @else

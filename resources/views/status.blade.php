@@ -46,7 +46,7 @@
                             <h4 id="user__info__name"><a href="https://github.com/{{ $user->github_username }}">{{ $user->name }}</a></h4>
 
                             <div class="user__info__status">
-                                {!! $prs->total_count >= 4 ? '<span class="complete">✔</span>' : '<span class="incomplete">✘</span>' !!} {{ $prs->total_count }} / 4 pull requests done
+                                {!! $prs->total_count >= 5 ? '<span class="complete">✔</span>' : '<span class="incomplete">✘</span>' !!} {{ $prs->total_count }} / 5 pull requests done
                             </div>
                         </div>
                     </div>

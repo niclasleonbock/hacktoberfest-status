@@ -1,57 +1,57 @@
 .summary {
-    &__list {
-        list-style-type: none;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        margin-right: -.5rem;
-        margin-left: -.5rem;
-        padding: 0;
+  &__list {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-right: -.5rem;
+    margin-left: -.5rem;
+    padding: 0;
+  }
+
+  &__box {
+    display: block;
+    width: 100%;
+    margin-top: 20px;
+
+    @media screen and (min-width: 769px) {
+      flex-basis: calc(25% - 16px);
+      max-width: calc(25% - 16px);
+      flex: 0 0 auto;
+
+      margin-right: 8px;
+      margin-left: 8px;
     }
 
-    &__box {
-        display: block;
-        width: 100%;
-        margin-top: 20px;
+    background-color: #fff;
+    border: 1px solid rgba(224, 224, 224, 0.5);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
 
-        @media screen and (min-width: 769px) {
-            flex-basis: calc(25% - 16px);
-            max-width: calc(25% - 16px);
-            flex: 0 0 auto;
+    &__header {
+      border-bottom: 1px solid rgba(224, 224, 224, 0.5);
+      background: rgba(224, 224, 224, 0.01);
 
-            margin-right: 8px;
-            margin-left: 8px;
-        }
-
-        background-color: #fff;
-        border: 1px solid rgba(224,224,224,0.5);
-        box-shadow: 0 2px 5px rgba(0,0,0,0.02);
-
-        &__header {
-            border-bottom: 1px solid rgba(224,224,224,0.5);
-            background: rgba(224,224,224,0.01);
-
-            h3 {
-                margin: 0;
-                font-size: 14px;
-                line-height: 20px;
-            }
-        }
-
-        &__header, &__content, &__meta {
-            padding: 16px;
-        }
-
-        &__meta {
-            font-size: 12px;
-            padding-bottom: 0;
-            margin: 0;
-        }
-
-        &__content p {
-            color: rgba(51,51,51,0.75);
-            font-size: 12px;
-            margin: 0;
-        }
+      h3 {
+        margin: 0;
+        font-size: 14px;
+        line-height: 20px;
+      }
     }
+
+    &__header, &__content, &__meta {
+      padding: 16px;
+    }
+
+    &__meta {
+      font-size: 12px;
+      padding-bottom: 0;
+      margin: 0;
+    }
+
+    &__content p {
+      color: rgba(51, 51, 51, 0.75);
+      font-size: 12px;
+      margin: 0;
+    }
+  }
 }

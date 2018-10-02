@@ -1,14 +1,11 @@
 @import 'variables';
-
 @import 'fonts';
 @import 'helpers';
-
-@import
-    'components/container',
-    'components/headlines',
-    'components/header',
-    'components/tooltip',
-    'components/user',
-    'components/summary',    
-    // import base at last so it can override stuff
-    'components/base';
+@import 'components/container',
+'components/headlines',
+'components/header',
+'components/tooltip',
+'components/user',
+'components/summary',
+  // import base at last so it can override stuff
+'components/base';

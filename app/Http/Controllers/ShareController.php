@@ -29,8 +29,8 @@ class ShareController extends Controller
      */
     public function __construct(PullRequestChecker $checker, User $user)
     {
-        $this->checker     = $checker;
-        $this->user        = $user;
+        $this->checker = $checker;
+        $this->user = $user;
         $this->sharingMode = true;
 
         parent::__construct();

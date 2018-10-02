@@ -48,6 +48,67 @@ class PullRequestChecker
     }
 
     /**
+     * Fetches all qualified pull requests from the GitHub API.
+     *
+     * @param \App\User $user
+     * @return array the list of qualified pull requests
+     */
+    public function getQualifiedPullRequests($user)
+    {
+        $cacheKey = 'prs_' . $user->github_username;
+
+        if ($this->cache->has($cacheKey)) {
+            return $this->cache->get($cacheKey);
+        }
+
+        $response = $this->getClient()->request('GET', self::API_ENDPOINT_SEARCH, [
+            'query' => $this->getQuery($user->github_username),
+            'headers' => [
+                'Authorization' => 'token ' . $user->github_token,
+            ],
+        ]);
+
+        $prs = json_decode($response->getBody());
+
+        if ($prs->total_count > 0 && count($prs->items) > 0) {
+            foreach ($prs->items as $pr) {
+                $pr->repo = $this->getRepositoryInfo(
+                    $this->getRepositoryName($pr->repository_url),
+                    $user->github_token
+                );
+            }
+        }
+
+        //Put in Cache
+        $this->cache->put($cacheKey, $prs, 0.33); // 20 seconds Timeout
+
+        return $prs;
+    }
+
+    /**
+     * Returns the instance of the Guttle HTTP client.
+     *
+     * @return \GuzzleHttp\Client client
+     */
+    protected function getClient()
+    {
+        return $this->client;
+    }
+
+    /**
+     * Builds the query string for querying the GitHub API.
+     *
+     * @param string $username
+     *
+     * @return string the query
+     */
+    protected function getQuery($username)
+    {
+        return 'q=-label:invalid+author:' . $username . '+is:public+type:pr+created:' .
+            $this->getStartDate() . '..' . $this->getEndDate();
+    }
+
+    /**
      * Returns the start date of the hacktober month.
      *
      * @return string the date
@@ -65,29 +126,6 @@ class PullRequestChecker
     protected function getEndDate()
     {
         return date('Y') . '-10-31T23:59:59-12:00';
-    }
-
-    /**
-     * Builds the query string for querying the GitHub API.
-     *
-     * @param string $username
-     *
-     * @return string the query
-     */
-    protected function getQuery($username)
-    {
-        return 'q=-label:invalid+author:' . $username . '+is:public+type:pr+created:' .
-            $this->getStartDate() . '..' . $this->getEndDate();
-    }
-
-    /**
-     * Returns the instance of the Guttle HTTP client.
-     *
-     * @return \GuzzleHttp\Client client
-     */
-    protected function getClient()
-    {
-        return $this->client;
     }
 
     /**
@@ -127,43 +165,5 @@ class PullRequestChecker
     protected function getRepositoryName($repoUrl)
     {
         return str_ireplace(self::API_BASE . self::API_ENDPOINT_REPO, '', $repoUrl);
-    }
-
-    /**
-     * Fetches all qualified pull requests from the GitHub API.
-     *
-     * @param \App\User $user
-     * @return array the list of qualified pull requests
-     */
-    public function getQualifiedPullRequests($user)
-    {
-        $cacheKey = 'prs_' . $user->github_username;
-
-        if ($this->cache->has($cacheKey)) {
-            return $this->cache->get($cacheKey);
-        }
-
-        $response = $this->getClient()->request('GET', self::API_ENDPOINT_SEARCH, [
-            'query' => $this->getQuery($user->github_username),
-            'headers' => [
-                'Authorization' => 'token ' . $user->github_token,
-            ],
-        ]);
-
-        $prs = json_decode($response->getBody());
-
-        if ($prs->total_count > 0 && count($prs->items) > 0) {
-            foreach ($prs->items as $pr) {
-                $pr->repo = $this->getRepositoryInfo(
-                    $this->getRepositoryName($pr->repository_url),
-                    $user->github_token
-                );
-            }
-        }
-
-        //Put in Cache
-        $this->cache->put($cacheKey, $prs, 0.33); // 20 seconds Timeout
-
-        return $prs;
     }
 }

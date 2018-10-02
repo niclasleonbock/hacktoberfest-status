@@ -1,8 +1,6 @@
 @import 'variables';
-
-@import
-    'components/container',
-    'components/header',
-    'components/headlines',
-    // import base at last so it can override stuff
-    'components/base';
+@import 'components/container',
+'components/header',
+'components/headlines',
+  // import base at last so it can override stuff
+'components/base';

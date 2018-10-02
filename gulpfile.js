@@ -20,15 +20,15 @@ const paths = {
 // sass
 gulp.task('sass', function () {
     return gulp.src([paths.src.sass + 'app.scss', paths.src.sass + 'preload.scss'])
-    .pipe(sass().on('error', sass.logError))
-    .pipe(autoprefixer({
-        browsers: ['last 4 versions'],
-        cascade: false
-    }))
-    .pipe(cleanCss({
-        compatibility: 'ie8'
-    }))
-    .pipe(gulp.dest(paths.dist.css));
+        .pipe(sass().on('error', sass.logError))
+        .pipe(autoprefixer({
+            browsers: ['last 4 versions'],
+            cascade: false
+        }))
+        .pipe(cleanCss({
+            compatibility: 'ie8'
+        }))
+        .pipe(gulp.dest(paths.dist.css));
 });
 
 gulp.task('sass:watch', function () {
@@ -38,12 +38,12 @@ gulp.task('sass:watch', function () {
 // copy tasks
 gulp.task('copy:fonts', function () {
     gulp.src(paths.src.fonts + '**/*.{ttf,woff,woff2,eof,svg}')
-    .pipe(gulp.dest(paths.dist.fonts));
+        .pipe(gulp.dest(paths.dist.fonts));
 });
 
 gulp.task('copy:images', function () {
     gulp.src(paths.src.images + '**/*.{png,jpg,svg}')
-    .pipe(gulp.dest(paths.dist.images));
+        .pipe(gulp.dest(paths.dist.images));
 });
 
 gulp.task('copy', ['copy:fonts', 'copy:images']);

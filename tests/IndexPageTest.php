@@ -1,6 +1,7 @@
 <?php
-use App\User;
+
 use App\Hacktoberfest\GitHub\PullRequestChecker;
+use App\User;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
@@ -33,8 +34,8 @@ class IndexPageTest extends TestCase
     public function testIndexAuthenticated()
     {
         $user = new User([
-            'name'         => 'TestUser',
-            'github_name'  => 'test_user',
+            'name' => 'TestUser',
+            'github_name' => 'test_user',
             'github_token' => 'foobar',
         ]);
 

@@ -1,78 +1,78 @@
 header.banner {
+  color: $color-text;
+
+  .container--header {
+    padding: 60px 0 50px;
+    position: relative;
+  }
+
+  h1 a {
     color: $color-text;
+    text-decoration: none;
+    border: 0;
+  }
 
-    .container--header {
-        padding: 60px 0 50px;
-        position: relative;
+  h1 {
+    margin-top: 24px;
+    margin-bottom: 12px;
+  }
+
+  h3 {
+    margin-top: 0;
+  }
+
+  p.description {
+    font-size: 16px;
+    font-family: $font-family-headline;
+    line-height: 24px;
+    font-weight: 400;
+    margin: auto;
+    margin-bottom: 24px;
+  }
+
+  &--with-background {
+    color: $color-header;
+    border-color: #fff;
+    background-image: radial-gradient(circle, #3241a6 0, #202a6b 120%);
+
+    a {
+      color: $color-header;
+      border-color: $color-primary;
+
+      &:hover, &:focus, &:active {
+        color: #ff9566;
+        border-color: $color-primary--dark;
+      }
     }
 
-    h1 a {
-        color: $color-text;
-        text-decoration: none;
-        border: 0;
+    .share {
+      .twitter-share-button,
+      .fb-share-button {
+        vertical-align: middle;
+      }
     }
+  }
 
-    h1 {
-        margin-top: 24px;
-        margin-bottom: 12px;
-    }
+  &--home {
+    height: calc(100vh - 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-    h3 {
+  @media screen and (min-width: 769px) {
+    &--with-image {
+      background-position: center;
+      background-size: cover;
+
+      .container h2 {
         margin-top: 0;
+        font-weight: 400;
+      }
     }
 
     p.description {
-        font-size: 16px;
-        font-family: $font-family-headline;
-        line-height: 24px;
-        font-weight: 400;
-        margin: auto;
-        margin-bottom: 24px;
+      width: 65%;
     }
-
-    &--with-background {
-        color: $color-header;
-        border-color: #fff;
-        background-image: radial-gradient(circle, #3241a6 0, #202a6b 120%);
-
-        a {
-            color: $color-header;
-            border-color: $color-primary;
-
-            &:hover, &:focus, &:active {
-                color: #ff9566;
-                border-color: $color-primary--dark;
-            }
-        }
-
-        .share {
-            .twitter-share-button,
-            .fb-share-button {
-                vertical-align: middle;
-            }
-        }
-    }
-
-    &--home {
-        height: calc(100vh - 80px);
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    @media screen and (min-width: 769px) {
-        &--with-image {
-            background-position: center;
-            background-size: cover;
-
-            .container h2 {
-                margin-top: 0;
-                font-weight: 400;
-            }
-        }
-
-        p.description {
-            width: 65%;
-        }
-    }
+  }
 }

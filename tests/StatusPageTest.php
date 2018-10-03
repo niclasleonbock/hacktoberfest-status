@@ -1,6 +1,6 @@
 <?php
+
 use App\Hacktoberfest\GitHub\PullRequestChecker;
-use App\Http\Controllers\HomeController;
 use App\User;
 
 /**
@@ -39,8 +39,8 @@ class StatusPageTest extends TestCase
     public function testSharedStatusPageForExistingUser()
     {
         $testUser = new User([
-            'name'         => 'TestUser',
-            'github_name'  => 'test_user',
+            'name' => 'TestUser',
+            'github_name' => 'test_user',
             'github_token' => 'foobar',
         ]);
 

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
 use App\Hacktoberfest\GitHub\PullRequestChecker;
+use Auth;
 
 class HomeController extends Controller
 {

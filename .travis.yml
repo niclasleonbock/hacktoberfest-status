@@ -1,14 +1,14 @@
 language: php
 php:
-  - '7.1'
+- '7.1'
 
 install:
-  - composer install --no-interaction
-  - cp .env.example .env
-  - php artisan key:generate
-  - touch database/database.sqlite
-  - php artisan migrate
+- composer install --no-interaction
+- cp .env.example .env
+- php artisan key:generate
+- touch database/database.sqlite
+- php artisan migrate
 
 script:
-  - ./vendor/bin/phpcs --standard=PSR2 app
-  - $TRAVIS_BUILD_DIR/vendor/bin/phpunit
+- ./vendor/bin/phpcs --standard=PSR2 app
+- $TRAVIS_BUILD_DIR/vendor/bin/phpunit

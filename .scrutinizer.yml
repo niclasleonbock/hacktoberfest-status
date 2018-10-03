@@ -1,7 +1,7 @@
 checks:
-    php: true
+  php: true
 
 filter:
-    paths: ['app/*']
-    dependency_paths:
-      - vendor/*
+  paths: ['app/*']
+  dependency_paths:
+  - vendor/*

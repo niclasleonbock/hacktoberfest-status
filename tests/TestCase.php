@@ -1,4 +1,5 @@
 <?php
+
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
@@ -19,7 +20,7 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
      */
     public function createApplication()
     {
-        $app = require __DIR__.'/../bootstrap/app.php';
+        $app = require __DIR__ . '/../bootstrap/app.php';
 
         $app->make(Illuminate\Contracts\Console\Kernel::class)->bootstrap();
 
@@ -46,7 +47,7 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
      * Creates fake pull request data matching the format returned by the Github
      * API.
      *
-     * @param integer  $count  The amount of pull requests to generate.
+     * @param integer $count The amount of pull requests to generate.
      *
      * @return object
      */
@@ -54,23 +55,23 @@ abstract class TestCase extends Illuminate\Foundation\Testing\TestCase
     {
         $now = new Carbon();
 
-        $fakeRepo            = new stdClass();
-        $fakeRepo->html_url  = 'https://github.com/NotARealRepo';
+        $fakeRepo = new stdClass();
+        $fakeRepo->html_url = 'https://github.com/NotARealRepo';
         $fakeRepo->full_name = 'NotARealRepo';
-        $fakeRepo->name      = 'NotARealRepo';
+        $fakeRepo->name = 'NotARealRepo';
 
-        $pullRequests                     = new stdClass();
-        $pullRequests->total_count        = $count;
+        $pullRequests = new stdClass();
+        $pullRequests->total_count = $count;
         $pullRequests->incomplete_results = false;
-        $pullRequests->items              = [];
+        $pullRequests->items = [];
 
-        for ($i=0; $i < $count; $i++) {
-            $fakePr             = new stdClass();
-            $fakePr->html_url   = 'https://github.com/NotARealRepo';
-            $fakePr->title      = 'Test PR';
-            $fakePr->repo       = $fakeRepo;
+        for ($i = 0; $i < $count; $i++) {
+            $fakePr = new stdClass();
+            $fakePr->html_url = 'https://github.com/NotARealRepo';
+            $fakePr->title = 'Test PR';
+            $fakePr->repo = $fakeRepo;
             $fakePr->created_at = $now->toDateTimeString();
-            $fakePr->body       = '';
+            $fakePr->body = '';
 
             $pullRequests->items[] = $fakePr;
         }

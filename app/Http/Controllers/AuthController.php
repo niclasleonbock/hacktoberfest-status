@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Socialite;
-use Auth;
 use App\User;
-use Exception;
+use Auth;
+use Socialite;
 
 class AuthController extends Controller
 {
@@ -30,18 +29,6 @@ class AuthController extends Controller
         $authUser = $this->findOrCreateUser($user);
 
         Auth::login($authUser, true);
-
-        return redirect('/');
-    }
-
-    /**
-     * Log the current user out.
-     *
-     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
-     */
-    public function signOut()
-    {
-        Auth::logout();
 
         return redirect('/');
     }
@@ -72,5 +59,17 @@ class AuthController extends Controller
         }
 
         return User::create($authUser);
+    }
+
+    /**
+     * Log the current user out.
+     *
+     * @return \Illuminate\Routing\Redirector|\Illuminate\Http\RedirectResponse
+     */
+    public function signOut()
+    {
+        Auth::logout();
+
+        return redirect('/');
     }
 }

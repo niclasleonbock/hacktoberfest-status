@@ -26,5 +26,8 @@ We're using Travis CI to automatically run tests. Feel free to add some more.
 8. Opening your .env file, set the `GITHUB_CALLBACK_URL` variable to point to the `/auth/callback` route for your instance e.g. `http://localhost:8000/auth/callback`
 9. Register a new OAuth application with [GitHub](https://github.com/settings/applications/new), ensuring to fill in the same callback URL specified in your `.env` previously.
 10. Once your application is created, you will be given both a client ID and secret.  These can then be placed into the relative `GITHUB_CLIENT_ID` and `GITHUB_CLIENT_SECRET` variables in your `.env` file.
+11. You must have the curl certificate set in your php.ini for this to function locally
+    1. Verify the location of the php.ini you are using `php --ini`
+    2. Ensure the setting `curl.cainfo` under the `[curl]` section has been set to the location of the [cacert.pem](https://curl.haxx.se/ca/cacert.pem) that can be aquired from [Curl](https://curl.haxx.se/).
 
 

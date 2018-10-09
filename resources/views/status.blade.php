@@ -37,6 +37,7 @@
                     @if ($sharingMode)
                         These are the <a href="https://hacktoberfest.digitalocean.com/">Hacktoberfest</a> stats of {{ $user->name }}.
                     @else
+
                         This little tool helps you to track your <a href="https://hacktoberfest.digitalocean.com/">Hacktoberfest</a> status. Below you can see how far you have already come.
                     @endif
                     </p>
@@ -48,7 +49,7 @@
                             <h4 id="user__info__name"><a href="https://github.com/{{ $user->github_username }}">{{ $user->name }}</a></h4>
 
                             <div class="user__info__status">
-                                {!! $prs->total_count >= 5 ? '<span class="complete">✔</span>' : '<span class="incomplete">✘</span>' !!} {{ $prs->total_count }} / 5 pull requests done
+                                {!! $prs->total_count >= config('settings.required_prs') ? '<span class="complete">✔</span>' : '<span class="incomplete">✘</span>' !!} {{ $prs->total_count }} / {{ config('settings.required_prs') }} pull requests done
                             </div>
                         </div>
                     </div>
@@ -72,7 +73,7 @@
                 @if ($prs->total_count == 0)
                     <div class="centered">
                         @if ($sharingMode)
-                            {{ $user->name }} hasn’t started yet. Sorry, nothing too see here.
+                            {{ $user->name }} hasn’t started yet. Sorry, nothing to see here.
                         @else
                             <h2 class="mb-0">Seems like you didn't even start yet.</h2>
                             <p class="description">
@@ -82,13 +83,13 @@
                     </div>
                 @else
                     @if (!$sharingMode)
-                        @if ($prs->total_count >= 5)
+                        @if ($prs->total_count >= config('settings.required_prs'))
                             <h2 class="mb-0 centered">Congrats, you're done!</h2>
                         @elseif ($prs->total_count == 1)
                             <h2 class="mb-0 centered">A good start, just keep doing.</h2>
                         @elseif ($prs->total_count == 2)
                             <h2 class="mb-0 centered">Almost halfway there, keep doing.</h2>
-                        @elseif ($prs->total_count == 3)
+                        @elseif ((config('settings.required_prs') - $prs->total_count) == 2)
                             <h2 class="mb-0 centered">Only 2 left, let's keep doing.</h2>
                         @else
                             <h2 class="mb-0 centered">You're almost done.</h2>

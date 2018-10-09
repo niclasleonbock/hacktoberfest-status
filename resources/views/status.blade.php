@@ -116,7 +116,7 @@
         <footer class="footer">
             <hr>
             <div class="container">
-                <p>This site is in no way affiliated with DigitalOcean, GitHub or the Hacktoberfest project. But it participates in the Hacktoberfest. So why not <a href="https://github.com/niclasleonbock/hacktoberfest-status">contribute on GitHub</a>?</p>
+                <p>This site is in no way affiliated with DigitalOcean, GitHub, Twilio, or the Hacktoberfest project. But it participates in the Hacktoberfest. So why not <a href="https://github.com/niclasleonbock/hacktoberfest-status">contribute on GitHub</a>?</p>
             </div>
         </footer>
 

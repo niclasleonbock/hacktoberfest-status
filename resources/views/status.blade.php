@@ -83,17 +83,7 @@
                     </div>
                 @else
                     @if (!$sharingMode)
-                        @if ($prs->total_count >= config('settings.required_prs'))
-                            <h2 class="mb-0 centered">Congrats, you're done!</h2>
-                        @elseif ($prs->total_count == 1)
-                            <h2 class="mb-0 centered">A good start, just keep doing.</h2>
-                        @elseif ($prs->total_count == 2)
-                            <h2 class="mb-0 centered">Almost halfway there, keep doing.</h2>
-                        @elseif ((config('settings.required_prs') - $prs->total_count) == 2)
-                            <h2 class="mb-0 centered">Only 2 left, let's keep doing.</h2>
-                        @else
-                            <h2 class="mb-0 centered">You're almost done.</h2>
-                        @endif
+                        <h2 class="mb-0 centered">{{ $encouragement_message }}</h2>
                         <p class="description centered">Your qualified pull requests:</p>
                     @else
                         <h3 class="mb-0 centered">{{ $user->name }}’s qualified pull requests:</h3>

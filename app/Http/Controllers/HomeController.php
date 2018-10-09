@@ -46,7 +46,9 @@ class HomeController extends Controller
             $message = "I've completed $prs->total_count pull requests for Hacktoberfest!";
         }
 
-        $viewData = compact('user', 'prs', 'message');
+        $encouragement_message = $this->getEncouragementText($prs->total_count);
+
+        $viewData = compact('user', 'prs', 'message', 'encouragement_message');
         $viewData['sharingMode'] = $this->sharingMode;
 
         return view('status', $viewData);

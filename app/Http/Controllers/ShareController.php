@@ -54,7 +54,9 @@ class ShareController extends Controller
 
         $prs = $this->checker->getQualifiedPullRequests($user);
 
-        $viewData = compact('user', 'prs');
+        $encouragement_message = $this->getEncouragementText($prs->total_count);
+
+        $viewData = compact('user', 'prs', 'encouragement_message');
         $viewData['sharingMode'] = $this->sharingMode;
 
         return view('status', $viewData);

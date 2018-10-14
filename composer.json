@@ -6,19 +6,22 @@
     "type": "project",
     "require": {
         "php": ">=5.6.4",
-        "laravel/framework": "5.3.*",
-        "laravel/socialite": "^2.0",
+        "laravel/framework": "5.7.*",
+        "laravel/socialite": "^3.0",
         "guzzlehttp/guzzle": "^6.2",
         "doctrine/dbal": "^2.5",
         "squizlabs/php_codesniffer": "^3.1",
-        "sentry/sentry-laravel": "^0.8.0"
+        "sentry/sentry-laravel": "^0.10.0",
+        "laravel/tinker": "^1.0",
+        "fideloper/proxy": "^4.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~5.0",
-        "symfony/css-selector": "3.1.*",
-        "symfony/dom-crawler": "3.1.*"
+        "phpunit/phpunit": "~7.0",
+        "symfony/css-selector": "^4.0",
+        "symfony/dom-crawler": "^4.0",
+        "filp/whoops": "~2.0"
     },
     "autoload": {
         "classmap": [
@@ -47,6 +50,10 @@
         "post-update-cmd": [
             "Illuminate\\Foundation\\ComposerScripts::postUpdate",
             "php artisan optimize"
+        ],
+        "post-autoload-dump": [
+            "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
+            "@php artisan package:discover"
         ]
     },
     "config": {

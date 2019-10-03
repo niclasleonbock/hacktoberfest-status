@@ -8,7 +8,7 @@
         @if ($sharingMode)
             <meta property="og:title" content="Hacktoberfest Status of {{ $user->name }}" />
             <meta property="og:description" content="On this page you can see the Hacktoberfest stats of {{ $user->name }}." />
-            <meta property="og:image" content="https://nyc3.digitaloceanspaces.com/hacktoberfest/Hacktoberfest17-TWFB-02.png" />
+            <meta property="og:image" content="https://hacktoberfest.digitalocean.com/assets/HF19_social-744d976f227e4aff6866443abcede8c651b309ec9c7c9f7410f5944f8e1299b9.png" />
         @endif
 
         @include('partials.favicon')
@@ -31,7 +31,9 @@
         <header class="banner banner--with-background">
             <div class="container container--header">
                 <div class="container__content centered">
-                    <img src="{{ asset('images/logo.svg') }}" alt="Hacktoberfest Logo">
+                    <div style="width: 400px; margin: 0 auto;">
+                        <img src="{{ asset('images/logo-2019.svg') }}" alt="Hacktoberfest Logo">
+                    </div>
 
                     <p class="mb-30 mt-30 description">
                     @if ($sharingMode)

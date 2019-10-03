@@ -6,6 +6,11 @@ header.banner {
         position: relative;
     }
 
+    .logo {
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
     h1 a {
         color: $color-text;
         text-decoration: none;
@@ -33,7 +38,7 @@ header.banner {
     &--with-background {
         color: $color-header;
         border-color: #fff;
-        background-image: radial-gradient(circle, #3241a6 0, #202a6b 120%);
+        background-image: radial-gradient(circle, #3241a6 0, #151F3D 120%);
 
         a {
             color: $color-header;

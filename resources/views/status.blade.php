@@ -31,7 +31,7 @@
         <header class="banner banner--with-background">
             <div class="container container--header">
                 <div class="container__content centered">
-                    <div style="width: 400px; margin: 0 auto;">
+                    <div class="logo">
                         <img src="{{ asset('images/logo-2019.svg') }}" alt="Hacktoberfest Logo">
                     </div>
 

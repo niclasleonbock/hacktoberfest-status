@@ -8,7 +8,7 @@
         <meta name="description" content="This little tool helps you to track your Hacktoberfest status">
         <meta property="og:title" content="Hacktoberfest Status Tracker" />
         <meta property="og:description" content="This little tool helps you to track your Hacktoberfest status" />
-        <meta property="og:image" content="https://nyc3.digitaloceanspaces.com/hacktoberfest/Hacktoberfest17-TWFB-02.png" />
+        <meta property="og:image" content="https://hacktoberfest.digitalocean.com/assets/HF19_social-744d976f227e4aff6866443abcede8c651b309ec9c7c9f7410f5944f8e1299b9.png" />
 
         <title>Hacktoberfest Status Tracker</title>
 
@@ -20,7 +20,9 @@
         <header class="banner banner--with-background banner--home">
             <div class="container container--header">
                 <div class="container__content centered">
-                    <img src="{{ asset('images/logo.svg') }}" alt="Hacktoberfest Logo">
+                    <div class="logo">
+                        <img src="{{ asset('images/logo-2019.svg') }}" alt="Hacktoberfest Logo">
+                    </div>
 
                     <h2>Error!</h2>
                     <p class="mt-30 description">Sorry, something unexpected happened.</p>

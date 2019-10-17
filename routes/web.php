@@ -17,4 +17,23 @@ Route::get('auth', 'AuthController@redirectToProvider');
 Route::get('auth/callback', 'AuthController@handleProviderCallback');
 Route::get('auth/signout', 'AuthController@signOut');
 
-Route::get('{github_username}', 'ShareController@index')->name('share');
+Route::get('/login', function(){
+    return redirect('/');
+});
+
+Route::namespace('Auth')->group(function () {
+    Route::get('/', 'LoginController@showLoginForm');
+    Route::post('login', 'LoginController@login')->name('login');
+    Route::post('logout', 'LoginController@logout')->name('logout');
+
+});
+
+
+Route::middleware(['basicAuth'])->group(function () {
+    Route::namespace('Auth')->group(function () {
+        Route::get('/', 'LoginController@showLoginForm');
+        Route::post('login', 'LoginController@login')->name('login');
+        Route::post('logout', 'LoginController@logout')->name('logout');
+
+    });
+});

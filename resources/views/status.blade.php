@@ -72,7 +72,7 @@
                 @if ($prs->total_count == 0)
                     <div class="centered">
                         @if ($sharingMode)
-                            {{ $user->name }} hasn’t started yet. Sorry, nothing too see here.
+                            {{ $user->name }} hasn't started yet. Sorry, nothing too see here.
                         @else
                             <h2 class="mb-0">Seems like you didn't even start yet.</h2>
                             <p class="description">
@@ -95,7 +95,7 @@
                         @endif
                         <p class="description centered">Your qualified pull requests:</p>
                     @else
-                        <h3 class="mb-0 centered">{{ $user->name }}’s qualified pull requests:</h3>
+                        <h3 class="mb-0 centered">{{ $user->name }}'s qualified pull requests:</h3>
                     @endif
 
                     <div class="summary">

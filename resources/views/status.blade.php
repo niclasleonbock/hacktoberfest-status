@@ -104,14 +104,14 @@
                             <li class="summary__box">
                                 <div class="summary__box__header">
                                     <h3>
-                                        <a href="{{ $item->html_url }}" class="tooltip" data-title="{{ $item->title }}">{{ str_limit($item->title, 32) }}</a>
+                                        <a href="{{ $item->html_url }}" class="tooltip" data-title="{{ $item->title }}">{{ substr($item->title, 0,20) }}</a>
                                     </h3>
                                 </div>
                                 <p class="summary__box__meta">
                                     Created in <a href="{{ $item->repo->html_url }}" class="tooltip" data-title="{{ $item->repo->full_name }}">{{ $item->repo->name }}</a> {{ \Carbon\Carbon::createFromTimeStamp(strtotime($item->created_at))->diffForHumans() }}.
                                 </p>
                                 <div class="summary__box__content">
-                                    <p>{{ str_limit(strip_tags($item->body), 140) }}</p>
+                                    <p>{{ substr($item->body,0, 140) }}</p>
                                 </div>
                             </li>
                             @endforeach

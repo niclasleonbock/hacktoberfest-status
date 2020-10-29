@@ -49,6 +49,9 @@ class HomeController extends Controller
         $viewData = compact('user', 'prs', 'message');
         $viewData['sharingMode'] = $this->sharingMode;
 
+
+        // return response()->json($prs);
+
         return view('status', $viewData);
     }
 }

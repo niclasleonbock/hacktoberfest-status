@@ -2,7 +2,7 @@
 
 This little tool helps you to track your Hacktoberfest status. 
 
-*Hacktoberfest Status Checker* is available online at [hacktoberfest.bock.rocks](https://hacktoberfest.bock.rocks/).
+*Hacktoberfest Status Checker* is no longer available online.
 
 ## Build
 We're using Travis CI to automatically run tests. Feel free to add some more. 
